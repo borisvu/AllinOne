@@ -36,5 +36,5 @@
     {{ end }}
 
     {{ if and $.Site.Params.include_rss }}
-        <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}}"><i class="fas fa-rss pr-1" aria-hidden="true"></i></a>
+        <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}"><i class="fas fa-rss pr-1" aria-hidden="true"></i></a>
     {{ end }}
