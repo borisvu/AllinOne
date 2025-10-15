@@ -6,6 +6,7 @@
   <meta name="google-site-verification" content="M6SLMdztejL36faGKx0ZUSzDyz4lhr5ssJ1yucCAH1Q" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.fediverse_creator }}<meta name="fediverse:creator" content="{{ . }}">{{ end }}
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
   
   {{ template "_internal/opengraph.html" . }}

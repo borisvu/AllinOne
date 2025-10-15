@@ -82,6 +82,7 @@ pygmentsuseclasses         = true
   twitter                  = "//twitter.com/you" 
   px500                    = "//px500"
   instagram                = "//instagram.com/you"
+  fediverse_creator        = "@username@instance.domain"   # Fediverse creator for proper attribution when shared on Mastodon
   include_rss              = true                          # include RSS <link> tag in <head> and show RSS icon
 
     
