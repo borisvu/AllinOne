@@ -8,7 +8,8 @@ publishdir                 = "public"
 enableEmoji                = true
 hasCJKLanguage             = true
 summaryLength              = 200
-Paginate                   = 3
+[pagination]
+  pagerSize                = 3
 # analytics
 GoogleAnalytics            = "your-google-analytic-id"
 
