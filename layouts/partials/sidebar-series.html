@@ -26,7 +26,7 @@
 
             {{ $title := add .Name ( add (add " (" (.Count | string)) ")" ) | title }}
             {{ $url := add ("series/" | absLangURL) (.Name | urlize) }}
-            {{ $data :=  (where $.Site.Data.series.series ".name" .Name) }}
+            {{ $data :=  (where hugo.Data.series.series ".name" .Name) }}
             {{ if gt (len $data) 0 }}   
               <!-- In Data  -->
               {{ range $data }}
