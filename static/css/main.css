@@ -17,12 +17,12 @@
   --grey-d3: #4b4b4b;
   --grey-d4: #333333;
 
-  --link-color: #428bca;
-  --active-color: #38849e;
+  --link-color: #2c6ca3; /* was #428bca (3.6:1); darkened for WCAG AA */
+  --active-color: #2f7087; /* was #38849e (3.95:1 on #f7f7f7) */
 
   --text-dark: #333333;
   --text-grey: #646464;
-  --text-light: #959595;
+  --text-light: #6e6e6e; /* was #959595 (2.8-3:1); now >=4.76:1 on #f7f7f7 */
 }
 
 /* 
@@ -1399,4 +1399,11 @@ toc-nav  scrollspy
     height: 70vh !important;
     min-height: 30rem;
   }
+}
+
+/* Accessibility (WCAG AA contrast): --text-light was darkened for light
+   backgrounds; the footer sits on dark #1C2331, so keep its original lighter
+   grey there (~5.6:1). */
+footer .copyright {
+  color: #959595;
 }
