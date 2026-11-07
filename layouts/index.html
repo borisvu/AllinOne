@@ -36,18 +36,19 @@
       <!-- Post list -->
       <!-- <div class="pt-5 px-5 mx-5"> -->
       <div class="col-md-9 mt-3">  
-        {{ $totalpostscount := len (.Data.Pages) }}
-        {{ $latestpostscount := .Site.Params.latestpostscount | default $totalpostscount }}
+        {{ $posts := where site.RegularPages "Section" "blog" }}
+        {{ $latestpostscount := site.Params.latestpostscount | default (len $posts) }}
         {{ if gt $latestpostscount 0 }}
-          <!-- <div class='post-heading'>
-            {{ i18n "latestPosts" }}
-          </div> -->
           <div>
-              {{ range (first $latestpostscount .Data.Pages.ByPublishDate.Reverse ) }}
+              {{ range first $latestpostscount $posts.ByPublishDate.Reverse }}
                   {{ partial "post-card.html" . }}
               {{ end }}
-              
           </div>
+          {{ if gt (len $posts) $latestpostscount }}
+            {{ with site.GetPage "/blog" }}
+              <div class="text-center my-4"><a href="{{ .RelPermalink }}">All posts &rarr;</a></div>
+            {{ end }}
+          {{ end }}
         {{ end }}
 
       </div>
