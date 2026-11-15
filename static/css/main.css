@@ -1407,3 +1407,59 @@ toc-nav  scrollspy
 footer .copyright {
   color: #959595;
 }
+
+/*
+
+Diagrams: ```mermaid blocks rendered by Pele (partials/mermaid.html)
+
+Pele reads its colors from --pele-* variables, and a color change applies
+without re-rendering. Light values map onto the site palette above. The dark
+set applies once a future theme switch sets <html data-theme="dark">. It is
+deliberately not tied to prefers-color-scheme while the rest of the site is
+light-only.
+
+*/
+
+.diagram {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  max-width: 100%;
+
+  --pele-bg: #ffffff;               /* .white-bg post surface */
+  --pele-fg: var(--text-dark);
+  --pele-fg-on-light: var(--text-dark);
+  --pele-fg-on-dark: #ffffff;
+  --pele-muted: var(--text-light);
+  --pele-line: var(--grey-d3);
+  --pele-surface: var(--grey-l4);
+  --pele-surface-alt: var(--grey-l3);
+  --pele-border: var(--grey-l1);
+  --pele-accent: var(--link-color);
+  --pele-critical: #c0392b;
+  --pele-error: #c0392b;
+  --pele-font: 'Raleway', "Helvetica Neue", Arial, sans-serif;
+  --pele-font-mono: 'Ubuntu Mono', monospace;
+}
+
+.diagram-render > svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Fallback (no JS / before render): keep the source readable as code. */
+.diagram > pre.mermaid {
+  margin: 0;
+}
+
+:root[data-theme="dark"] .diagram {
+  --pele-bg: #100f0f;
+  --pele-fg: #cecdc3;
+  --pele-muted: #878580;
+  --pele-line: #cecdc3;
+  --pele-surface: #1c1b1a;
+  --pele-surface-alt: #282726;
+  --pele-border: #403e3c;
+  --pele-accent: #4385be;
+  --pele-critical: #d14d41;
+  --pele-error: #d14d41;
+}

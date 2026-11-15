@@ -1,0 +1,11 @@
+{{- /*
+  Renders ```mermaid fenced code blocks.
+
+  Without JavaScript (and in RSS/summaries) the diagram source stays readable
+  as a plain code block. partials/mermaid.html upgrades it to an SVG with
+  Pele (https://pele.run), loaded only on pages that use a diagram.
+*/ -}}
+{{- .Page.Store.Set "hasMermaid" true -}}
+<div class="diagram">
+<pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>
+</div>
