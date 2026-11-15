@@ -1,0 +1,25 @@
+{{- /*
+  Mermaid diagrams via Pele (https://pele.run), self-hosted lazy ESM build.
+  Only emitted on pages whose content has a ```mermaid block (see
+  _markup/render-codeblock-mermaid.html). Each diagram type's code is fetched
+  on demand. Colors come from CSS variables in css/main.css, so a future
+  light/dark switch needs no re-render.
+
+  To upgrade: copy dist/esm/lazy.js and dist/esm/chunks/ from the new pele
+  npm package into static/js/vendors/pele/<version>/ and bump $version.
+*/ -}}
+{{- if .Store.Get "hasMermaid" }}
+{{- $version := "1.13.0" }}
+<script type="module">
+  const { mountAsync } = await import({{ printf "js/vendors/pele/%s/lazy.js" $version | absURL }});
+  for (const pre of document.querySelectorAll('.diagram > pre.mermaid')) {
+    const source = pre.textContent;
+    const host = document.createElement('div');
+    host.className = 'diagram-render';
+    pre.replaceWith(host);
+    mountAsync(host, source, {
+      onError: (error) => console.warn('Diagram failed to render:', error),
+    });
+  }
+</script>
+{{- end }}
