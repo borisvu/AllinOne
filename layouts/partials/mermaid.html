@@ -5,6 +5,14 @@
   on demand. Colors come from CSS variables in css/main.css, so a future
   light/dark switch needs no re-render.
 
+  Responsive direction: a flowchart drawn LR that is wider than its column is
+  redrawn TB, and redrawn LR again when the column grows back. Pele does this
+  itself (mount() watches the container); its default only flips below 640px,
+  so directionBreakpoint is lifted to "any width". Keep LR charts under ~750px
+  so they stay horizontal in the desktop post column; use <br> in labels to
+  narrow them. Subgraph `direction` is ignored by Pele, so long chains can't
+  wrap into rows.
+
   To upgrade: copy dist/esm/lazy.js and dist/esm/chunks/ from the new pele
   npm package into static/js/vendors/pele/<version>/ and bump $version.
 */ -}}
@@ -18,6 +26,8 @@
     host.className = 'diagram-render';
     pre.replaceWith(host);
     mountAsync(host, source, {
+      // Flip LR <-> TB whenever the chart doesn't fit, at any column width.
+      directionBreakpoint: Infinity,
       onError: (error) => console.warn('Diagram failed to render:', error),
     });
   }
